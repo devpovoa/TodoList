@@ -1,20 +1,15 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  Alert,
-  ActivityIndicator,
-} from "react-native";
+import { View, Text, Image, Alert } from "react-native";
 import { MaterialIcons, Octicons } from "@expo/vector-icons";
 import { style } from "./styles";
 import Logo from "../../assets/logo.png";
 import { themas } from "../../global/themes";
-import { Input } from "../../components/input";
+import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
+import { useNavigation, NavigationProp } from "@react-navigation/native";
 
 export default function Login() {
+  const navigation = useNavigation<NavigationProp<any>>();
   const [useId, setUseId] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -33,14 +28,15 @@ export default function Login() {
       setTimeout(() => {
         if (useId == "admin@use" && password == "303026") {
           Alert.alert(`Logado com sucesso!${"🚀"}`);
+          navigation.reset({ routes: [{ name: "BottomRoutes" }] });
         } else {
           Alert.alert(`Usuário não encontrado!${"📂"}`);
         }
-
-        setLoading(false);
       }, 3000);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   }
 
