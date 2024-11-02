@@ -1,6 +1,10 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 
 export default function User() {
-  return <Text>Olá Mundo Usuário!</Text>;
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>User</Text>
+    </View>
+  );
 }

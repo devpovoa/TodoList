@@ -1,6 +1,11 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
+import { style } from "./style";
 
 export default function List() {
-  return <Text>Olá Mundo Lista!</Text>;
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text>Lista</Text>
+    </View>
+  );
 }
