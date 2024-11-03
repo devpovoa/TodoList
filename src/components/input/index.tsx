@@ -5,6 +5,8 @@ import {
   Text,
   TextInputProps,
   TouchableOpacity,
+  StyleProp,
+  TextStyle,
 } from "react-native";
 import { style } from "./style";
 import { MaterialIcons, FontAwesome, Octicons } from "@expo/vector-icons";
@@ -23,6 +25,8 @@ type Props = TextInputProps & {
   title?: string;
   onIconLeftPress?: () => void;
   onIconRigthPress?: () => void;
+  heigth?: number;
+  labelStyle?: StyleProp<TextStyle>;
 };
 
 export const Input = forwardRef(
@@ -35,6 +39,8 @@ export const Input = forwardRef(
       title,
       onIconLeftPress,
       onIconRigthPress,
+      heigth,
+      labelStyle,
       ...rest
     } = Props;
 
@@ -60,9 +66,12 @@ export const Input = forwardRef(
 
     return (
       <Fragment>
-        {title && <Text style={style.tituloInput}>{title}</Text>}
+        {title && <Text style={[style.tituloInput, labelStyle]}>{title}</Text>}
         <View
-          style={[style.boxInput, { paddingLeft: calculateSizePaddingLeft() }]}
+          style={[
+            style.boxInput,
+            { paddingLeft: calculateSizePaddingLeft(), height: heigth || 40 },
+          ]}
         >
           {IconLeft && iconLeftName && (
             <TouchableOpacity onPress={onIconLeftPress} style={style.Button}>
@@ -76,7 +85,10 @@ export const Input = forwardRef(
           )}
 
           <TextInput
-            style={[style.input, { width: calculateSizeWidth() }]}
+            style={[
+              style.input,
+              { width: calculateSizeWidth(), height: "100%" },
+            ]}
             {...rest}
           />
 
