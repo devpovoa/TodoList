@@ -7,5 +7,6 @@ export const themas = {
     bsScreen: "f1f7fa",
     red: "#FF494C",
     blueLigth: "#87CEF6",
+    transparent: "rgba(0, 0, 0, 0.5)",
   },
 };

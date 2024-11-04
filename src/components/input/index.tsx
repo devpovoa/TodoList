@@ -70,7 +70,11 @@ export const Input = forwardRef(
         <View
           style={[
             style.boxInput,
-            { paddingLeft: calculateSizePaddingLeft(), height: heigth || 40 },
+            {
+              paddingLeft: calculateSizePaddingLeft(),
+              height: heigth || 40,
+              padding: 5,
+            },
           ]}
         >
           {IconLeft && iconLeftName && (
