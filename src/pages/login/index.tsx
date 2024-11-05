@@ -70,10 +70,10 @@ export default function Login() {
         <Button text="Entrar" loading={loading} onPress={() => getLogin()} />
       </View>
 
-      <Text style={style.buttonFooter}>
+      {/* <Text style={style.buttonFooter}>
         Não tem conta?{" "}
         <Text style={{ color: themas.colors.primary }}>Crie agora!</Text>
-      </Text>
+      </Text> */}
     </View>
   );
 }

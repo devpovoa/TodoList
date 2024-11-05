@@ -1,39 +1,77 @@
-import React from "react";
-import { FlatList, Text, TouchableOpacity, View } from "react-native";
+import React, { useContext, useRef } from "react";
+import { FlatList, Text, View } from "react-native";
 import { style } from "./style";
 import { Input } from "../../components/Input";
-import { MaterialIcons } from "@expo/vector-icons";
+import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { Ball } from "../../components/Ball";
 import { Flag } from "../../components/Flag";
 import { themas } from "../../global/themes";
-
-type PropCard = {
-  item: number;
-  title: string;
-  description: string;
-  flag: "urgente" | "opcional";
-};
-const data: Array<PropCard> = [
-  { item: 0, title: "sleep", description: "página 5", flag: "urgente" },
-  { item: 1, title: "Food", description: "página 5", flag: "opcional" },
-  { item: 2, title: "code", description: "página 5", flag: "opcional" },
-];
+import { AuthContextList } from "../../context/authContext_list";
+import { formatDateToBR } from "../../global/functions";
+import { Swipeable } from "react-native-gesture-handler";
 
 export default function List() {
-  const _renderCard = (item: PropCard) => {
+  const { taskList, handleDelete, handleEdit } =
+    useContext<AuthContextType>(AuthContextList);
+  const swipeableRefs = useRef([]);
+
+  const renderRightActions = () => {
     return (
-      <TouchableOpacity style={style.card}>
-        <View style={style.rowCard}>
-          <View style={style.rowCardLeft}>
-            <Ball color="red" />
-            <View>
-              <Text style={style.titleCard}>{item.title}</Text>
-              <Text style={style.descriptionCard}>{item.description}</Text>
+      <View style={style.button}>
+        <AntDesign name="delete" size={20} color={"#FFF"} />
+      </View>
+    );
+  };
+
+  const renderLeftActions = () => {
+    return (
+      <View
+        style={[style.button, { backgroundColor: themas.colors.blueLigth }]}
+      >
+        <AntDesign name="edit" size={20} color={"#FFF"} />
+      </View>
+    );
+  };
+
+  const handleSwipeOpen = (directions: "right" | "left", item, index) => {
+    if (directions == "right") {
+      handleDelete(item);
+    } else {
+      handleEdit(item);
+    }
+    swipeableRefs.current[index]?.close();
+  };
+
+  const _renderCard = (item: PropCard, index) => {
+    const color =
+      item.flag == "opcional" ? themas.colors.blueLigth : themas.colors.red;
+    return (
+      <Swipeable
+        ref={(ref) => (swipeableRefs.current[index] = ref)}
+        key={index}
+        renderRightActions={renderRightActions}
+        renderLeftActions={renderLeftActions}
+        onSwipeableOpen={(directions) =>
+          handleSwipeOpen(directions, item, index)
+        }
+      >
+        <View style={style.card}>
+          <View style={style.rowCard}>
+            <View style={style.rowCardLeft}>
+              <Ball color={color} />
+              <View>
+                <Text style={style.titleCard}>{item.title}</Text>
+                <Text style={style.descriptionCard}>{item.description}</Text>
+                <Text style={style.descriptionCard}>
+                  até
+                  {formatDateToBR(item.timeLimit)}
+                </Text>
+              </View>
             </View>
+            <Flag caption={item.flag} color={color} />
           </View>
-          <Flag caption="urgente" color={themas.colors.red} />
         </View>
-      </TouchableOpacity>
+      </Swipeable>
     );
   };
 
@@ -48,11 +86,11 @@ export default function List() {
 
       <View style={style.boxList}>
         <FlatList
-          data={data}
+          data={taskList}
           style={{ marginTop: 40, paddingHorizontal: 30 }}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item, index }) => {
-            return _renderCard(item);
+            return _renderCard(item, index);
           }}
         />
       </View>
