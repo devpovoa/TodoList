@@ -26,7 +26,7 @@ export default function Login() {
       }
 
       setTimeout(() => {
-        if (useId == "a" && password == "a") {
+        if (useId == "@user" && password == "1234") {
           Alert.alert(`Logado com sucesso!${"🚀"}`);
           navigation.reset({ routes: [{ name: "BottomRoutes" }] });
         } else {
