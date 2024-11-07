@@ -1,13 +1,10 @@
 <div align="center">
 <img align="center" alt="Povoa-C#" height="250" width="250" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg"/>
+ 
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
+
+![GitHub Org's stars](https://img.shields.io/github/stars/DevPovoa?style=social)
 </div>
-
-
-
-![Badge Finalizado](http://img.shields.io/static/v1?label=STATUS&message=%20Finalizado&color=GREEN&style=for-the-badge)
-
-
-
 
 
 # :bookmark_tabs:Projeto 
