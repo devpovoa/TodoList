@@ -108,7 +108,9 @@ export const AuthProviderList = (props: any): any => {
       const storageData = await AsyncStorage.getItem("taskList");
       // console.log(storageData);
       let taskList: Array<any> = storageData ? JSON.parse(storageData) : [];
-      const itemIndex = taskList.findIndex((task) => task.item === newItem);
+      const itemIndex = taskList.findIndex(
+        (task) => task.item === newItem.item
+      );
 
       if (itemIndex >= 0) {
         taskList[itemIndex] = newItem;
@@ -272,7 +274,7 @@ export const AuthProviderList = (props: any): any => {
       {props.children}
       <Modalize
         ref={modalizeRef}
-        childrenStyle={{ height: Dimensions.get("window").height / 1.75 }}
+        childrenStyle={{ height: 525 }}
         adjustToContentHeight={true}
       >
         {_container()}
