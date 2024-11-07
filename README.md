@@ -53,5 +53,4 @@ O programa esta estruturado na arquitetura Redux que é uma biblioteca JavaScrip
 
 :arrow_double_down:Download abaixo:
 
-:link:[TodoList](https://expo.dev/artifacts/eas/pjHEirycs2cjjCFsyPiRBG.apk)
-
+:link:[TodoList](https://expo.dev/artifacts/eas/4bBwcFA9fHXyPGezDwrBcA.apk)
