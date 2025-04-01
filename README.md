@@ -39,5 +39,7 @@ A aplicação segue a arquitetura baseada no **Redux**, uma biblioteca JavaScrip
 A aplicação está disponível no formato **APK**. Para instalar, certifique-se de ativar as permissões para instalação de aplicativos de fontes desconhecidas em seu dispositivo Android.
 
 :arrow_double_down: **Download do APK:**  
-[Baixar TodoList](https://drive.google.com/file/d/1rYb4_PozUupMx2PW2o_7Q-JHyQ8IWNtP/view?usp=drive_link)
+[Baixar TodoList](https://drive.usercontent.google.com/download?id=1rYb4_PozUupMx2PW2o_7Q-JHyQ8IWNtP&export=download&authuser=0)
+
+🚀 Repositório criado e produzido por © DevPovoa 🎯
 
